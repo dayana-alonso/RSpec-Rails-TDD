@@ -10,8 +10,10 @@ class TasksController < ApplicationController
 		@task = Task.new(strong_params)
 
 		if @task.save
-			redirect_to tasks_path, notice: "Good job"
+			redirect_to tasks_path, notice: "Successfully created task"
 		else
+			flash[:notice] = 'there was a problem saving task'
+			render 'new'
 		end
 	end
 

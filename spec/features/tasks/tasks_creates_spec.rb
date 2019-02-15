@@ -13,7 +13,7 @@ describe 'creating tasks' do
 			click_button 'save task'
 			}.to change(Task, :count).by(1)
 
-		expect(page).to have_xpath(dt('fash-notice'))
+		expect(page).to have_xpath(dt('flash-notice'))
 		expect(page).to have_current_path(tasks_path)
 	end
 	
@@ -24,7 +24,7 @@ describe 'creating tasks' do
 			click_button 'save task'
 			}.to change(Task, :count).by(0)
 
-			expect(page).to have_xpath(dt('fash-notice'))
+			expect(page).to have_xpath(dt('flash-notice'))
 			expect(page).to have_xpath(dt('validation-errors'))
 		end
 	end

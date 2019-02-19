@@ -25,9 +25,25 @@ class TasksController < ApplicationController
 		redirect_to tasks_path, notice: "Successfully marked as done"
 	end
 
+	def edit
+		@task = Task.find(params[:id])
+	end
+
+	def update
+		@task = Task.find(params[:id])
+
+		if @task.update(strong_params)
+			redirect_to tasks_path, notice: "Successfully updated task"
+		else
+			flash[:notice] = 'there was a problem updating task'
+			render 'edit'
+		end
+	end
+
 	private
 
 	def strong_params
 		params.require(:task).permit(:name, :status)		
 	end
 end
+

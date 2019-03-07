@@ -1,5 +1,8 @@
 <h2>Archives </h2>
 
 <%= @archives.each do |archive| %>
-	<p><%= archive.name %></p>
-<% end -%> 
+	<p>
+		<%= archive.name %>
+		<%= link_to "delete",archive_path(archive), "data-test": "delete-archive-link", method: :delete %>
+		</p>
+<% end %> 
